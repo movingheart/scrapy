@@ -85,6 +85,12 @@ class Selector(object_ref):
         self._root = _root
         self._expr = _expr
 
+    def get_text(self):
+        '''Get the element's text'''
+        import re
+        re_text=re.sub(r'<.*?>','',self.extract())
+        del re
+        return re_text
     def xpath(self, query):
         try:
             xpathev = self._root.xpath
